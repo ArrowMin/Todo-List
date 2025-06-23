@@ -1,5 +1,5 @@
 {
-  "name": "webpack-template",
+  "name": "todo-list",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -28,5 +28,8 @@
   "bugs": {
     "url": "https://github.com/ArrowMin/Webpack-Template/issues"
   },
-  "homepage": "https://github.com/ArrowMin/Webpack-Template#readme"
+  "homepage": "https://github.com/ArrowMin/Webpack-Template#readme",
+  "dependencies": {
+    "date-fns": "^4.1.0"
+  }
 }
