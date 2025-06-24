@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 id="websiteHeader">To-Do List</h1>
+    <div id="contentContainer">
+      <div id="sidebar">
+        <h2 id="projectsHeader">Projects:</h2>
+        <button id="newProjectButton">Add New Project</button>
+        <dialog id="projectDialog">
+          <form method="dialog">
+            <h2>Create a new Project</h2>
+            <label for="new-project-name">Name:</label>
+            <input
+              type="text"
+              id="new-project-name"
+              name="name"
+              placeholder="Cool new project..."
+            />
+            <br />
+            <menu>
+              <button type="submit" value="submit">Submit</button>
+              <button value="cancel">Cancel</button>
+            </menu>
+          </form>
+        </dialog>
+      </div>
+      <div id="content">
+        <h2 id="toDoItemsHeader">To Do:</h2>
+        <button id="newToDoButton">Add New To-Do</button>
+        <dialog id="todoDialog">
+          <form method="dialog">
+            <h2>Create a new To-Do-Item</h2>
+            <label for="title">Title:</label>
+            <input
+              type="text"
+              id="title"
+              name="Title"
+              placeholder="New To-Do title..."
+            />
+            <label for="description">Description:</label>
+            <input
+              type="text"
+              id="description"
+              name="Description"
+              placeholder="Describe your To-Do..."
+            />
+            <label for="dueDate">Due Date:</label>
+            <input type="date" id="dueDate" name="Due Date" />
+            <label for="priority">Choose a priority:</label>
+            <select name="priority" id="priority">
+              <option value="high">High</option>
+              <option value="medium">Medium</option>
+              <option value="low">Low</option>
+            </select>
+            <br /><br />
+            <menu>
+              <button type="submit" value="submit">Submit</button>
+              <button value="cancel">Cancel</button>
+            </menu>
+          </form>
+        </dialog>
+      </div>
+    </div>
+  </body>
+</html>
