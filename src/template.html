@@ -10,6 +10,7 @@
     <div id="contentContainer">
       <div id="sidebar">
         <h2 id="projectsHeader">Projects:</h2>
+        <div id="projectsContainer"></div>
         <button id="newProjectButton">Add New Project</button>
         <dialog id="projectDialog">
           <form method="dialog">
@@ -18,13 +19,14 @@
             <input
               type="text"
               id="new-project-name"
-              name="name"
+              name="Name"
               placeholder="Cool new project..."
+              required
             />
             <br />
             <menu>
               <button type="submit" value="submit">Submit</button>
-              <button value="cancel">Cancel</button>
+              <button value="cancel" formnovalidate>Cancel</button>
             </menu>
           </form>
         </dialog>
@@ -41,6 +43,7 @@
               id="title"
               name="Title"
               placeholder="New To-Do title..."
+              required
             />
             <label for="description">Description:</label>
             <input
@@ -50,17 +53,17 @@
               placeholder="Describe your To-Do..."
             />
             <label for="dueDate">Due Date:</label>
-            <input type="date" id="dueDate" name="Due Date" />
+            <input type="date" id="dueDate" name="DueDate" />
             <label for="priority">Choose a priority:</label>
-            <select name="priority" id="priority">
-              <option value="high">High</option>
-              <option value="medium">Medium</option>
+            <select name="Priority" id="priority">
               <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
             </select>
             <br /><br />
             <menu>
               <button type="submit" value="submit">Submit</button>
-              <button value="cancel">Cancel</button>
+              <button value="cancel" formnovalidate>Cancel</button>
             </menu>
           </form>
         </dialog>

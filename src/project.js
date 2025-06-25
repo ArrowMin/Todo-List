@@ -1,4 +1,5 @@
 export function createProject(projectName) {
+  const id = crypto.randomUUID();
   let listOfItems = [];
 
   function addItem(item) {
@@ -21,5 +22,5 @@ export function createProject(projectName) {
     return [...listOfItems];
   }
 
-  return { projectName, addItem, removeItem, getItems };
+  return { id, projectName, addItem, removeItem, getItems };
 }
