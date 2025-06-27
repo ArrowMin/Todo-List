@@ -34,6 +34,7 @@
       <div id="content">
         <h2 id="toDoItemsHeader">To Do:</h2>
         <h2 id="currentProject">Default</h2>
+        <div id="todoContainer"></div>
         <button id="newToDoButton">Add New To-Do</button>
         <dialog id="todoDialog">
           <form method="dialog">
@@ -57,9 +58,42 @@
             <input type="date" id="dueDate" name="DueDate" />
             <label for="priority">Choose a priority:</label>
             <select name="Priority" id="priority">
-              <option value="low">Low</option>
-              <option value="medium">Medium</option>
-              <option value="high">High</option>
+              <option value="Low">Low</option>
+              <option value="Medium">Medium</option>
+              <option value="High">High</option>
+            </select>
+            <br /><br />
+            <menu>
+              <button type="submit" value="submit">Submit</button>
+              <button value="cancel" formnovalidate>Cancel</button>
+            </menu>
+          </form>
+        </dialog>
+        <dialog id="editDialog">
+          <form method="dialog">
+            <h2>Edit To-Do-Item</h2>
+            <label for="title">Title:</label>
+            <input
+              type="text"
+              id="title"
+              name="Title"
+              placeholder="New To-Do title..."
+              required
+            />
+            <label for="description">Description:</label>
+            <input
+              type="text"
+              id="description"
+              name="Description"
+              placeholder="Describe your To-Do..."
+            />
+            <label for="dueDate">Due Date:</label>
+            <input type="date" id="dueDate" name="DueDate" />
+            <label for="priority">Choose a priority:</label>
+            <select name="Priority" id="priority">
+              <option value="Low">Low</option>
+              <option value="Medium">Medium</option>
+              <option value="High">High</option>
             </select>
             <br /><br />
             <menu>

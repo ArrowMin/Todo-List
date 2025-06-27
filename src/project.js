@@ -22,5 +22,9 @@ export function createProject(projectName) {
     return [...listOfItems];
   }
 
-  return { id, projectName, addItem, removeItem, getItems };
+  function getItemById(itemId) {
+    return listOfItems.find((item) => item.id === itemId);
+  }
+
+  return { id, projectName, addItem, removeItem, getItems, getItemById };
 }

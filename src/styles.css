@@ -54,9 +54,16 @@ form {
   flex-direction: column;
 }
 
-#projectsContainer {
+#projectsContainer,
+#todoContainer {
   display: flex;
   flex-direction: column;
+}
+
+.todoItem {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0px;
 }
 
 .project-button {

@@ -1,6 +1,7 @@
-import { viewProject } from "./dom-updates";
+import { viewProject, populateEditForm } from "./dom-updates";
 import { handleNewProject } from "./projectHandler";
-import { state } from "./state";
+import { handleNewToDo, deleteToDo } from "./todoHandler";
+import { state, getCurrentProject } from "./state";
 
 export function initializeFormDialog() {
   const newProjectBtn = document.getElementById("newProjectButton");
@@ -11,6 +12,9 @@ export function initializeFormDialog() {
   // New To-Do Dialog
   const todoDialog = document.getElementById("todoDialog");
   const formInToDoDialog = todoDialog.querySelector("form");
+  // Edit To-Do Dialog
+  const editDialog = document.getElementById("editDialog");
+  const formInEditDialog = editDialog.querySelector("form");
 
   newProjectBtn.addEventListener("click", () => {
     projectDialog.showModal();
@@ -37,6 +41,7 @@ export function initializeFormDialog() {
     console.log(`Dialog closed with return value: ${todoDialog.returnValue}.`);
     if (todoDialog.returnValue === "submit") {
       const formData = new FormData(formInToDoDialog);
+      handleNewToDo(formData);
       //console.log("Form data:", Object.fromEntries(formData.entries()));
       formInToDoDialog.reset(); // Clear the form for the next time
     }
@@ -51,25 +56,42 @@ export function initializeFormDialog() {
       state.currentProjectId = projectId;
       console.log(`Current project id is now: ${state.currentProjectId}`);
       //get the actual project from the state list
-      const selectedProject = state.projects.find(
-        (project) => project.id === projectId
-      );
+      const selectedProject = getCurrentProject();
       if (selectedProject) {
         console.log("Found project object:", selectedProject);
         console.log("Project Name:", selectedProject.projectName);
-
-        // You can now access its methods, like getItems()
-        console.log(
-          "To-Do items for this project:",
-          selectedProject.getItems()
-        );
         viewProject(selectedProject);
-
-        // Now you can pass this full object to your renderer
-        // renderToDosForProject(selectedProject);
       } else {
         console.error("Error: Project not found in state!");
       }
+    }
+  });
+
+  const todoContainer = document.getElementById("todoContainer");
+  todoContainer.addEventListener("click", (event) => {
+    const deleteButton = event.target.closest(".todoItemDelete");
+    const editButton = event.target.closest(".todoItemEdit");
+    if (deleteButton) {
+      const todoItemId = deleteButton.parentNode.dataset.todoId;
+      deleteToDo(todoItemId);
+      deleteButton.parentNode.remove();
+    }
+    if (editButton) {
+      const todoItemId = editButton.parentNode.dataset.todoId;
+
+      // 2. Get the current project object
+      const currentProject = getCurrentProject();
+      if (!currentProject) return; // Safety check
+
+      // 3. Find the specific to-do item object within that project
+      const todoItem = currentProject.getItemById(todoItemId);
+      if (!todoItem) return; // Safety check
+
+      // 4. Populate the edit form with this item's data
+      populateEditForm(todoItem);
+
+      // 5. Open the edit dialog
+      editDialog.showModal();
     }
   });
 }
