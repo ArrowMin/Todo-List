@@ -53,3 +53,16 @@ form {
   display: flex;
   flex-direction: column;
 }
+
+#projectsContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-button {
+  height: 50px;
+}
+
+#currentProject {
+  margin: 0;
+}
