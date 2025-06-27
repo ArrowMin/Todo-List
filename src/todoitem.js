@@ -1,11 +1,11 @@
-export function createToDoItem(title, description, dueDate, priority) {
+export function createToDoItem(data) {
   // Private properties of every To-Do Item
   const properties = {
-    id: crypto.randomUUID(),
-    title,
-    description,
-    dueDate,
-    priority,
+    id: data.id || crypto.randomUUID(),
+    title: data.title,
+    description: data.description,
+    dueDate: data.dueDate,
+    priority: data.priority,
   };
   return {
     //ACCESS ID
@@ -39,6 +39,10 @@ export function createToDoItem(title, description, dueDate, priority) {
     },
     set priority(newPriority) {
       properties.priority = newPriority;
+    },
+    toJSON: function () {
+      // Just return the raw properties object
+      return properties;
     },
   };
 }

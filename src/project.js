@@ -1,5 +1,5 @@
-export function createProject(projectName) {
-  const id = crypto.randomUUID();
+export function createProject({ projectName, id }) {
+  const projectId = id || crypto.randomUUID();
   let listOfItems = [];
 
   function addItem(item) {
@@ -26,5 +26,19 @@ export function createProject(projectName) {
     return listOfItems.find((item) => item.id === itemId);
   }
 
-  return { id, projectName, addItem, removeItem, getItems, getItemById };
+  return {
+    id: projectId,
+    projectName,
+    addItem,
+    removeItem,
+    getItems,
+    getItemById,
+    toJSON: function () {
+      return {
+        id: this.id,
+        projectName: this.projectName,
+        listOfItems: listOfItems, // Expose the list for serialization
+      };
+    },
+  };
 }

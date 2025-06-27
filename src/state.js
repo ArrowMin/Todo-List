@@ -1,6 +1,11 @@
-export const state = {
+import { loadState } from "./storage";
+
+const loadedState = loadState();
+
+export const state = loadedState || {
   projects: [],
   currentProjectId: null,
+  editingTodoId: null,
 };
 
 export function getCurrentProject() {
